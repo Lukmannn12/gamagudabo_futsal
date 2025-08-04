@@ -85,9 +85,9 @@
                         <p class="font-extralight text-sm py-2 text-black">{{ \Carbon\Carbon::parse($tanggal->tanggal)->format('d F Y') }}</p>
                         <p class="text-[#FF543E] font-bold text-sm pt-3">Harga : Rp {{ number_format($tanggal->harga, 2, ',', '.') }}</p>
                         <button
-                            class="mt-4 px-10 py-2 bg-[#013C67] text-white rounded-full hover:bg-blue-700 transition pilih-tanggal"
+                            class="mt-4 px-10 py-2 bg-[#013C67] text-white rounded-full hover:bg-blue-700 transition pilih-tanggal text-sm"
                             data-tanggal-id="{{ $tanggal->id }}">
-                            Pilih
+                            Lihat Jadwal
                         </button>
 
                         <!-- Modal -->

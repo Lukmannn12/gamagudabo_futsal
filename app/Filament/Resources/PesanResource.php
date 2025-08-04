@@ -42,36 +42,35 @@ class PesanResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
-                ->label('Nama'),
+                    ->label('Nama')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email')
-                ->label('Email'),
+                    ->label('Email'),
                 Tables\Columns\TextColumn::make('no_hp')
-                ->label('Nomor Handphone'),
+                    ->label('Nomor Handphone'),
                 Tables\Columns\TextColumn::make('jumlah_tiket')
-                ->label('Jumlah Tiket'),
+                    ->label('Jumlah Tiket'),
                 Tables\Columns\TextColumn::make('tanggal.tanggal') // Menampilkan nama tanggal
-                ->label('Tanggal'),
-                Tables\Columns\TextColumn::make('user_id') // Menampilkan user_id
-                ->label('User ID'),
+                    ->label('Tanggal'),
                 Tables\Columns\TextColumn::make('status') // Menampilkan user_id
-                ->label('Status'),
-                
+                    ->label('Status'),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),    
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make()
-                ->form([
-                    Forms\Components\Select::make('status')
-                        ->options([
-                            'sudah bayar' => 'Sudah Bayar',
-                            'belum bayar' => 'Belum Bayar',
-                        ])
-                        ->required()
-                        ->label('Status'),
-                ]),
+                    ->form([
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'sudah bayar' => 'Sudah Bayar',
+                                'belum bayar' => 'Belum Bayar',
+                            ])
+                            ->required()
+                            ->label('Status'),
+                    ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -91,8 +90,12 @@ class PesanResource extends Resource
     {
         return [
             'index' => Pages\ListPesans::route('/'),
-            'create' => Pages\CreatePesan::route('/create'),
             'edit' => Pages\EditPesan::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }
